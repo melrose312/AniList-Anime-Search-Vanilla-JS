@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AniList Anime Search</title>
+    <script
+      src="https://kit.fontawesome.com/03ceb9ba49.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <section id="nav">
+      <nav class="nav__container">
+        <div class="row">
+          <div class="nav__logo">
+            <img src="./assets/logo-img.png" class="nav__logo--image" alt="" />
+            <div class="nav__logo--title">AniList</div>
+          </div>
+          <div class="nav__links">
+            <ul>
+              <li><a href="#" class="nav__link">Home</a></li>
+              <li><a href="#" class="nav__link">About</a></li>
+              <li><a href="#" class="nav__link">Blog</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </section>
+    <section id="search">
+      <div class="search__container">
+        <div class="search__input">
+          <input
+            id="search__input"
+            type="text"
+            placeholder="Search for an anime..."
+          />
+          <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+      </div>
+    </section>
+    <main id="series__display">
+      <div class="container">
+        <div class="series__header">
+          <h2 class="section__title">Series & Movies</h2>
+          <select id="filter">
+            <option value="" disabled selected>Sort</option>
+            <option value="A-Z">Alphabetical: A - Z</option>
+            <option value="Z-A">Alphabetical: Z - A</option>
+            <option value="RATING">Rating</option>
+          </select>
+        </div>
+        <!-- <div class="series__loading">
+          <i class="fa-solid fa-spinner series__loading--spinner"></i>
+        </div> -->
+        <div class="series__wrapper">
+          <div class="series__card">
+            <figure class="series__img--wrapper">
+              <img class="series__img" src="" alt="" />
+            </figure>
+            <div class="series__title">Series: Title</div>
+            <div class="series__ratings">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
