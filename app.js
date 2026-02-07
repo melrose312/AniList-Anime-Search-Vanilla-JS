@@ -48,10 +48,14 @@ const animeSearch = `
 `;
 
 async function fetchAnime(searchTerm) {
+    // ADDED TO STOP PREVIOUS SEARCHES FROM FLICKERING ON NEW SEARCHES
+    seriesLoading.classList.add("active");
+    seriesWrapper.innerHTML = "";
+    // END
     const variables = {
         search: searchTerm,
         page: 1,
-        perPage: 12,
+        perPage: 9,
     };
 
     const response = await fetch(apiUrl, {
@@ -68,6 +72,8 @@ async function fetchAnime(searchTerm) {
 
     const data = await response.json();
     const animeData = data.data.Page.media;
+
+    seriesLoading.classList.remove("active");
     renderAnime(animeData);
 }
 
