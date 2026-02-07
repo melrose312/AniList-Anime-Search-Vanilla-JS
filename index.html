@@ -17,7 +17,7 @@
         <div class="row">
           <div class="nav__logo">
             <img src="./assets/logo-img.png" class="nav__logo--image" alt="" />
-            <div class="nav__logo--title">AniList</div>
+            <h2 class="nav__logo--title">AniList</h2>
           </div>
           <div class="nav__links">
             <ul>
@@ -37,7 +37,9 @@
             type="text"
             placeholder="Search for an anime..."
           />
-          <button><i class="fa-solid fa-magnifying-glass"></i></button>
+          <button onclick="handleSearch()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
         </div>
       </div>
     </section>
@@ -50,27 +52,25 @@
             <option value="A-Z">Alphabetical: A - Z</option>
             <option value="Z-A">Alphabetical: Z - A</option>
             <option value="RATING">Rating</option>
+            <option value="TRENDING">Trending</option>
           </select>
         </div>
         <div class="series__loading">
           <i class="fa-solid fa-spinner"></i>
         </div>
-        <div class="series__wrapper">
-          <div class="series__card">
-            <figure class="series__img--wrapper">
-              <img class="series__img" src="" alt="" />
-            </figure>
-            <div class="series__title">Series: Title</div>
-            <div class="series__ratings">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star-half-alt"></i>
-            </div>
+        <div class="series__wrapper"></div>
+      </div>
+    </main>
+    <footer class="footer__container">
+      <div class="row">
+        <div class="footer__logo">
+          <img src="./assets/logo-img.png" class="footer__logo--image" alt="" />
+          <div class="footer__logo--title">
+            AniList
+            <p class="footer__logo--copyright">Melody Gonzales &copy; 2026</p>
           </div>
         </div>
       </div>
-    </main>
+    </footer>
   </body>
 </html>
