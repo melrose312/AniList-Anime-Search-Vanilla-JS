@@ -11,7 +11,8 @@ html {
 }
 
 body {
-  background-color: #1a1625;
+  background: linear-gradient(135deg, #151020 0%, #1a1625 40%, #2a2440 100%);
+  background-attachment: fixed;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -38,8 +39,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 24px 0;
-  /* margin: 0 auto; */
+  padding: clamp(16px, 3vw, 24px) 0;
 }
 
 .nav__container {
@@ -53,12 +53,12 @@ nav {
 }
 
 .nav__logo--image {
-  height: 72px;
-  width: 72px;
+  height: clamp(48px, 8vw, 72px);
+  width: clamp(48px, 8vw, 72px);
 }
 
 .nav__logo--title {
-  font-size: 32px;
+  font-size: clamp(20px, 4vw, 32px);
   font-weight: 900;
   margin-left: 12px;
   padding-bottom: 2px;
@@ -74,23 +74,28 @@ nav {
 .nav__links li {
   list-style-type: none;
   color: #1a1819;
-  margin-left: 24px;
+  margin-left: clamp(12px, 2vw, 24px);
 }
 
 .nav__link {
-  font-size: 24px;
+  color: #1a1625;
+  font-size: clamp(16px, 2.5vw, 24px);
   font-weight: 600;
   padding-top: 4px;
   letter-spacing: 0.35px;
-  border-bottom: 2px solid transparent;
   position: relative;
   text-decoration: none;
+  cursor: not-allowed;
+}
+
+.nav__link:hover {
+  border-bottom: 2px solid #1a1625;
 }
 
 /* SEARCH INPUT */
 
 #search {
-  padding: 64px 24px;
+  padding: clamp(24px, 6vw, 64px) clamp(12px, 3vw, 24px);
 }
 
 .search__container {
@@ -112,17 +117,14 @@ nav {
 
 .search__input input {
   flex: 1;
-  padding: 18px 70px 18px 24px;
-  font-size: 18px;
+  padding: clamp(12px, 2vw, 18px) 60px clamp(12px, 2vw, 18px) clamp(14px, 2vw, 24px);
+  font-size: clamp(14px, 2vw, 18px);
   font-weight: 500;
   border: none;
   border-radius: 50px;
   background-color: #252030;
   color: #fff;
   outline: none;
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
 }
 
 .search__input::placeholder {
@@ -130,15 +132,12 @@ nav {
 }
 
 .search__input button {
-  padding: 18px 24px;
-  font-size: 20px;
+  padding: clamp(12px, 2vw, 18px) clamp(14px, 2vw, 24px);
+  font-size: clamp(16px, 2vw, 20px);
   background-color: #ff4300;
   color: #1a1625;
   border: none;
   border-radius: 50px;
-  transition:
-    background-color 0.2s ease,
-    transform 0.1s ease;
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -150,10 +149,10 @@ nav {
   background-color: #ff6a33;
 }
 
-/* MAIN SERIES DISPLAY SECTION */
+/* MAIN RENDER DISPLAY SECTION */
 
 #series__display {
-  padding: 40px 0 200px;
+  padding: clamp(24px, 4vw, 40px) 0 clamp(120px, 20vw, 200px);
   flex: 1;
 }
 
@@ -169,7 +168,7 @@ nav {
 }
 
 .section__title {
-  font-size: 28px;
+  font-size: clamp(20px, 3vw, 28px);
   font-weight: 700;
   color: #ff4300;
 }
@@ -183,7 +182,7 @@ nav {
 .series__wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: clamp(16px, 2vw, 24px);
   justify-content: flex-start;
 }
 
@@ -195,7 +194,7 @@ nav {
 }
 
 .series__img--wrapper {
-  height: 400px;
+  height: clamp(280px, 40vw, 400px);
   margin: 0;
   overflow: hidden;
   border-radius: 8px;
@@ -205,19 +204,18 @@ nav {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
 }
 
 .series__title {
   color: #fff;
-  font-size: 16px;
+  font-size: clamp(14px, 1.5vw, 16px);
   font-weight: 600;
   margin-top: 4px;
 }
 
 .series__ratings {
   color: #ffc107;
-  font-size: 16px;
+  font-size: clamp(14px, 1.5vw, 16px);
   display: flex;
   gap: 2px;
 }
@@ -257,7 +255,7 @@ nav {
   justify-content: center;
   align-items: center;
   background-color: #252030;
-  padding: 20px 0;
+  padding: clamp(12px, 2vw, 20px) 0;
   z-index: 100;
 }
 
@@ -274,16 +272,58 @@ nav {
 }
 
 .footer__logo--image {
-  height: 72px;
-  width: 72px;
+  height: clamp(48px, 8vw, 72px);
+  width: clamp(48px, 8vw, 72px);
   filter: invert(1);
 }
 
 .footer__logo--title {
   text-align: center;
-  font-size: 16px;
+  font-size: clamp(12px, 1.5vw, 16px);
   margin-left: 12px;
   padding-bottom: 2px;
   letter-spacing: 0.6px;
   color: #fff;
+}
+
+/* NO RESULTS MESSAGE */
+
+.no__results {
+  color: #ff4300;
+  font-size: 18px;
+  text-align: center;
+  width: 100%;
+  padding: 40px 0;
+}
+
+/* RESPONSIVE STYLING - PHONES AND TABLETS */
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .nav__links ul {
+    justify-content: center;
+  }
+
+  .search__input {
+    max-width: 100%;
+  }
+
+  .series__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  #filter {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .series__card {
+    flex: 0 0 calc(50% - 8px);
+  }
 }

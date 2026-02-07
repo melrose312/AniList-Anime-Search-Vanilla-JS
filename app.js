@@ -8,11 +8,24 @@ const filterSeries = document.getElementById("filter");
 
 let currentAnimeData = [];
 
+// HELPER FUNCTION FOR NO RESULTS MESSAGE
+function showNoResults(errorMessage) {
+  searchInput.value = "";
+  currentAnimeData = [];
+
+  seriesLoading.classList.remove("active");
+  seriesWrapper.innerHTML = `<p class="no__results">${errorMessage}</p>`;
+  seriesHeader.classList.add("active");
+  
+}
+
 function handleSearch() {
-  const searchTerm = searchInput.value;
-  if (searchTerm) {
-    fetchAnime(searchTerm);
+  const searchTerm = searchInput.value.trim();
+  if (!searchTerm) {
+    showNoResults("Please enter an anime name");
+    return;
   }
+  fetchAnime(searchTerm);
 }
 
 searchInput.addEventListener("keypress", (event) => {
@@ -111,7 +124,6 @@ async function fetchTrending() {
 fetchTrending();
 
 async function fetchAnime(searchTerm) {
-  // ADDED TO STOP PREVIOUS RENDER FROM FLICKERING ON NEW SEARCHES
   seriesLoading.classList.add("active");
   seriesWrapper.innerHTML = "";
   sectionTitle.textContent = "Series & Movies";
@@ -137,6 +149,12 @@ async function fetchAnime(searchTerm) {
 
   const data = await response.json();
   const animeData = data.data.Page.media;
+
+  // HANDLES NO RESULTS FOUND
+  if (!animeData || animeData.length === 0) {
+    showNoResults(`No results found for "${searchTerm}"`);
+    return;
+  }
 
   // SHOW LOADING
   setTimeout(() => {
