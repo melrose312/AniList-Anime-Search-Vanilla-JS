@@ -16,7 +16,7 @@ function showNoResults(errorMessage) {
   seriesLoading.classList.remove("active");
   seriesWrapper.innerHTML = `<p class="no__results">${errorMessage}</p>`;
   seriesHeader.classList.add("active");
-  
+
 }
 
 function handleSearch() {
@@ -189,11 +189,18 @@ function renderAnime(animeData) {
               <img class="series__img" src="${anime.coverImage.large}" alt="${anime.title.english || anime.title.romaji}" />
             </figure>
             <div class="series__title">${anime.title.english || anime.title.romaji}</div>
-            <div class="series__ratings"> Rating: ${anime.averageScore || 'N/A'}</div>
+            <div class="series__ratings" style="color: ${getRatingColor(anime.averageScore)}"> Rating: ${anime.averageScore || 'N/A'}</div>
           </div> `
   }).join("");
 
   seriesWrapper.innerHTML = animeHTML;
   seriesHeader.classList.add("active");
   searchInput.value = "";
+
+}
+
+function getRatingColor(rating) {
+  if (rating >= 80) return "green";
+  if (rating >= 65) return "yellow";
+  return "red";
 }
