@@ -1,4 +1,3 @@
-
 const searchInput = document.getElementById("search__input");
 const seriesWrapper = document.querySelector(".series__wrapper");
 const seriesLoading = document.querySelector(".series__loading");
@@ -16,13 +15,12 @@ function showNoResults(errorMessage) {
   seriesLoading.classList.remove("active");
   seriesWrapper.innerHTML = `<p class="no__results">${errorMessage}</p>`;
   seriesHeader.classList.add("active");
-
 }
 
 function handleSearch() {
   const searchTerm = searchInput.value.trim();
   if (!searchTerm) {
-    showNoResults("Please enter an anime name");
+    showNoResults("Please enter an anime title");
     return;
   }
   fetchAnime(searchTerm);
@@ -128,7 +126,6 @@ async function fetchAnime(searchTerm) {
   seriesWrapper.innerHTML = "";
   sectionTitle.textContent = "Series & Movies";
 
-
   const variables = {
     search: searchTerm,
     page: 1,
@@ -169,38 +166,39 @@ function filterAnime(data, sortType) {
   // LOCALCOMPARE USED TO HELP SORT INTERNATIONAL CHARACTERS
   if (sortType === "A-Z") {
     return sorted.sort((a, b) =>
-      (a.title.english || a.title.romaji || "").localeCompare(b.title.english || b.title.romaji || ""));
+      (a.title.english || a.title.romaji || "").localeCompare(
+        b.title.english || b.title.romaji || "",
+      ),
+    );
   } else if (sortType === "Z-A") {
     return sorted.sort((a, b) =>
-      (b.title.english || b.title.romaji || "").localeCompare(a.title.english || a.title.romaji || ""));
-  } else if (sortType === "RATING") {
-    return sorted.sort((a, b) => (b.averageScore || 0) - (a.averageScore || 0));
-  } else if (sortType === "POPULAR") {
-    return sorted.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
-  } else {
-    return sorted;
-  }
+      (b.title.english || b.title.romaji || "").localeCompare(
+        a.title.english || a.title.romaji || "",
+      ),
+    );
+  } else if (sortType === "RATING") return sorted;
 }
 
 function renderAnime(animeData) {
-  const animeHTML = animeData.map(anime => {
-    return `<div class="series__card">
+  const animeHTML = animeData
+    .map((anime) => {
+      return `<div class="series__card">
             <figure class="series__img--wrapper">
               <img class="series__img" src="${anime.coverImage.large}" alt="${anime.title.english || anime.title.romaji}" />
             </figure>
             <div class="series__title">${anime.title.english || anime.title.romaji}</div>
-            <div class="series__ratings" style="color: ${getRatingColor(anime.averageScore)}"> Rating: ${anime.averageScore || 'N/A'}</div>
-          </div> `
-  }).join("");
+            <div class="series__ratings" style="color: ${getRatingColor(anime.averageScore)}"> Rating: ${anime.averageScore || "N/A"}</div>
+          </div> `;
+    })
+    .join("");
 
   seriesWrapper.innerHTML = animeHTML;
   seriesHeader.classList.add("active");
   searchInput.value = "";
-
 }
 
 function getRatingColor(rating) {
   if (rating >= 80) return "green";
   if (rating >= 65) return "yellow";
-  return "red";
+  else return "red";
 }
