@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Series Page</title>
+    <script
+      src="https://kit.fontawesome.com/03ceb9ba49.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="anime.js" defer></script>
+  </head>
+  <section id="nav">
+    <nav class="nav__container">
+      <div class="row">
+        <div class="nav__logo">
+          <img src="./assets/logo-img.png" class="nav__logo--image" alt="" />
+          <h2 class="nav__logo--title">AniList</h2>
+        </div>
+        <div class="nav__links">
+          <ul>
+            <li><a href="index.html" class="nav__link">Home</a></li>
+            <li><a href="#" class="nav__link">About</a></li>
+            <li><a href="#" class="nav__link">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </section>
+  <main id="series__details">
+    <div class="container">
+      <div class="series__loading active">
+        <i class="fa-solid fa-spinner"></i>
+      </div>
+      <a href="index.html" class="back__link">
+        <i class="fa-solid fa-arrow-left"></i> Back to Search
+      </a>
+      <div class="series__page--wrapper">
+        <div class="series__page--img">
+          <img src="" alt="" />
+        </div>
+        <div class="series__page--info">
+          <h2 class="series__page--title"></h2>
+          <div class="series__page--rating"></div>
+          <div class="series__page--details"></div>
+          <p class="series__page--description"></p>
+        </div>
+      </div>
+      <div class="characters__section">
+        <h3 class="characters__title">Characters</h3>
+        <div class="characters__wrapper"></div>
+      </div>
+    </div>
+  </main>
+  <footer class="footer__container">
+    <div class="row">
+      <div class="footer__logo">
+        <img src="./assets/logo-img.png" class="footer__logo--image" alt="" />
+        <div class="footer__logo--title">
+          AniList
+          <p class="footer__logo--copyright">Melody Gonzales &copy; 2026</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</html>

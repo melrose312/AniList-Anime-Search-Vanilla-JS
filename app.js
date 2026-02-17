@@ -177,18 +177,22 @@ function filterAnime(data, sortType) {
       ),
     );
   } else if (sortType === "RATING") return sorted;
+  else if (sortType === "TV") return sorted.filter((a) => a.format === "TV");
+  else if (sortType === "MOVIE") return sorted.filter((a) => a.format === "MOVIE");
 }
 
 function renderAnime(animeData) {
   const animeHTML = animeData
     .map((anime) => {
-      return `<div class="series__card">
+      return `<a href="anime.html?id=${anime.id}" class="series__card--link">
+          <div class="series__card">
             <figure class="series__img--wrapper">
               <img class="series__img" src="${anime.coverImage.large}" alt="${anime.title.english || anime.title.romaji}" />
             </figure>
             <div class="series__title">${anime.title.english || anime.title.romaji}</div>
             <div class="series__ratings" style="color: ${getRatingColor(anime.averageScore)}"> Rating: ${anime.averageScore || "N/A"}</div>
-          </div> `;
+          </div>
+        </a>`;
     })
     .join("");
 
